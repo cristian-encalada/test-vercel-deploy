@@ -1,7 +1,8 @@
 from flask import Flask
 from handlers.routes import configure_routes
-import MySQLdb
 from flask_cors import CORS
+import MySQLdb
+import pymysql  # Import PyMySQL
 from dotenv import load_dotenv
 from flask_session import Session
 import os
@@ -20,12 +21,14 @@ app.config['SESSION_USE_SIGNER'] = True
 app.config['SECRET_KEY'] = 'ananasma'
 Session(app)
 
-app.config['MYSQL_HOST'] = os.getenv('MYSQL_HOST')
-app.config['MYSQL_USER'] = os.getenv('MYSQL_USER')
-app.config['MYSQL_PASSWORD'] = os.getenv('MYSQL_PASSWORD')
-app.config['MYSQL_DB'] = os.getenv('MYSQL_DB')
+# Configure your MySQL connection using PyMySQL
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = 'root'
+app.config['MYSQL_DB'] = os.getenv('mp_db')
 
-mysql = MySQLdb.connect(
+# Create a PyMySQL connection
+mysql = pymysql.connect(
     host=app.config['MYSQL_HOST'],
     user=app.config['MYSQL_USER'],
     password=app.config['MYSQL_PASSWORD'],
