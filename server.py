@@ -2,7 +2,7 @@ import uuid
 from werkzeug.security import check_password_hash
 from flask import Flask, render_template, redirect, request, jsonify, make_response, session, send_from_directory
 from flask_restful import Api, Resource
-from flask_mysqldb import MySQL
+# from flask_mysqldb import MySQL
 from datetime import datetime
 from dateutil.parser import parse
 from flask_cors import CORS
@@ -29,7 +29,7 @@ app.config['MYSQL_USER'] = os.getenv('MYSQL_USER')
 app.config['MYSQL_PASSWORD'] = os.getenv('MYSQL_PASSWORD')
 app.config['MYSQL_DB'] = os.getenv('MYSQL_DB')
 
-mysql = MySQL(app)
+# mysql = MySQL(app)
 
 
 @app.route('/set_cookie')
