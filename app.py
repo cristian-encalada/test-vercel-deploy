@@ -1,7 +1,6 @@
 from flask import Flask
 from handlers.routes import configure_routes
 from flask_cors import CORS
-import MySQLdb
 import pymysql  # Import PyMySQL
 from dotenv import load_dotenv
 from flask_session import Session
